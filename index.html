@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>YuGothicの実験</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 0.5em;
+        border: solid 1px #333;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const usingFontFamily = document.querySelector("#using-font-family");
+        const tableCells = document.querySelectorAll("td");
+        for (const cell of tableCells) {
+          cell.addEventListener("mouseover", (e) => {
+            const getUsedFontFamilies = getComputedStyle(
+              e.target,
+              ""
+            ).fontFamily;
+            const fontFamiliesArray = getUsedFontFamilies
+              .replaceAll('"', "")
+              .replaceAll(", ", ",")
+              .split(",");
+            // firefoxで使えないためコメントアウト
+            // const fontFamiliesArray = e.target.computedStyleMap().get("font-family").toString().replaceAll('"', "").split(",");
+            const getActualUsedFontFamily =
+              fontFamiliesArray.find((e) => {
+                console.log(document.fonts.check(`16px ${e}`));
+                return document.fonts.check(`16px ${e}`);
+              }) ||
+              getComputedStyle(
+                e.target.parentNode.children[1],
+                ""
+              ).fontFamily.replaceAll('"', "");
+            usingFontFamily.textContent = getActualUsedFontFamily;
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>YuGothicの実験</h1>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>指定なし</th>
+          <th>'Yu Gothic'</th>
+          <th>YuGothic</th>
+          <th>'Yu Gothic', YuGothic</th>
+          <th>'Yu Gothic Medium', YuGothic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>指定なし</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 100">
+          <th>100</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 200">
+          <th>200</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 300">
+          <th>300</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 400">
+          <th>400/normal</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 500">
+          <th>500</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 600">
+          <th>600</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 700">
+          <th>700/bold</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 800">
+          <th>800</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+        <tr style="font-weight: 900">
+          <th>900</th>
+          <td>1aあア阿</td>
+          <td style="font-family: 'Yu Gothic'">1aあア阿</td>
+          <td style="font-family: YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic', YuGothic">1aあア阿</td>
+          <td style="font-family: 'Yu Gothic Medium', YuGothic">1aあア阿</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1252821 -->
+    <p>利用フォント(Chromeのみ正しく動作): <span id="using-font-family"><span/></p>
+  </body>
+</html>
